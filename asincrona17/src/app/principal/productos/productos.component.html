@@ -1,0 +1,30 @@
+<section class="container">
+  <table class="table mt-5 border">
+    <thead class="table-dark">
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Codigo</th>
+        <th scope="col">Descripcion</th>
+        <th scope="col">Precio de compra</th>
+        <th scope="col">Precio de venta</th>
+        <th scope="col">Ganancia</th>
+        <th scope="col">Existencia</th>
+        <th scope="col">Editar</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let pro of productos">
+        <td>{{pro.id}}</td>
+        <td>{{pro.codigo}}</td>
+        <td>{{pro.descripcion}}</td>
+        <td>{{pro.compra}}</td>
+        <td>{{pro.venta}}</td>
+        <td>{{pro.ganancia}}</td>
+        <td>{{pro.existencia}}</td>
+        <td>
+          <input routerLink="/productos/producto/{{productos|json}}/{{pro.id}}" type="button" value="Editar">
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>

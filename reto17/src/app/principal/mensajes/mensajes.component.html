@@ -1,0 +1,24 @@
+<section class="container mt-5">
+  <table class="table border">
+    <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Pais</th>
+        <th scope="col">Email</th>
+        <th scope="col">Password</th>
+        <th scope="col">Telephone</th>
+        <th scope="col">Message</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let dato of listado">
+        <td scope="row">{{dato.name}}</td>
+        <td scope="row">{{dato.pais}}</td>
+        <td scope="row">{{dato.email}}</td>
+        <td scope="row">{{dato.password}}</td>
+        <td scope="row">{{dato.telephone}}</td>
+        <td scope="row">{{dato.message}}</td>
+      </tr>
+    </tbody>
+  </table>
+</section>

@@ -1,0 +1,82 @@
+<section class="container p-4">
+  <form class="col-5 mx-auto" [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+    <h2 class="text-center mb-3">Contacto</h2>
+    <section class="col-auto">
+      <input type="text" formControlName="name" class="form-control" required placeholder="Nombre">
+      <div *ngIf="contactForm.get('name').invalid && contactForm.get('name').touched" class="error">
+        El nombre es requerido
+      </div>
+    </section>
+    <p></p>
+
+    <section class="col-auto">
+      <input type="email" formControlName="email" class="form-control" required placeholder="Correo Electronico">
+      <div *ngIf="contactForm.get('email').invalid && contactForm.get('email').touched" class="error">
+        El correo electrónico es requerido
+      </div>
+    </section>
+    <p></p>
+
+    <section class="col-auto">
+      <input type="password" class="form-control" formControlName="password" required minlength="8"
+        placeholder="Contraseña">
+      <div *ngIf="contactForm.get('password').invalid && contactForm.get('password').touched" class="error">
+        La contraseña es requerida y debe tener al menos 8 caracteres
+      </div>
+    </section>
+
+    <p></p>
+    <section class="col-auto">
+      <input type="text" class="form-control" formControlName="telephone" required placeholder="Telefono">
+      <div *ngIf="contactForm.get('telephone').invalid && contactForm.get('telephone').touched" class="error">
+        El teléfono es requerido
+      </div>
+    </section>
+
+    <div class="my-3">
+      <select class="form-select" name="pais" formControlName="pais" required>
+        <option selected disabled>Seleccione un pais</option>
+        <option value="peru">Peru</option>
+        <option value="chile">Chile</option>
+        <option value="uruguay">Uruguay</option>
+      </select>
+      <div *ngIf="contactForm.get('pais').invalid && contactForm.get('pais').touched" class="error">
+        El pais es requerido
+      </div>
+    </div>
+
+
+    <section class="col-auto">
+      <textarea rows="5" cols="30" formControlName="message" required class="form-control"
+        placeholder="Mensaje"></textarea>
+      <div *ngIf="contactForm.get('message').invalid && contactForm.get('message').touched" class="error">
+        El mensaje es requerido
+      </div>
+    </section>
+    <p></p>
+    <section class="col-auto">
+      <button [disabled]="contactForm.invalid" type="submit">Enviar</button>
+    </section>
+  </form>
+
+  <div class="mt-5">
+    <div class=" row d-flex align-items-center text-center">
+      <section class="col">
+        <p>Ver todos:</p>
+        <input class="btn btn-primary" type="button" value="Buscar" routerLink="/mensajes/{{listado|json}}">
+      </section>
+      <section class="col">
+        <p>Buscar por país:</p>
+        <div class="mb-3 col-5 mx-auto">
+          <select class="form-select" name="paisBusq" [(ngModel)]="paisBusqueda">
+            <option value="peru">Peru</option>
+            <option value="chile">Chile</option>
+            <option value="uruguay">Uruguay</option>
+          </select>
+        </div>
+        <input class="btn btn-primary" type="button" value="Buscar"
+          routerLink="/mensajes/{{listado|json}}/{{paisBusqueda}}">
+      </section>
+    </div>
+  </div>
+</section>
